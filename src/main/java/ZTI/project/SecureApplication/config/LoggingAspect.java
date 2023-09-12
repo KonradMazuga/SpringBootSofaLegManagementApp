@@ -16,7 +16,7 @@ public class LoggingAspect {
 
     Logger log = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Pointcut(value="execution(* ZTI.project.SecureApplication.controller.*.*(..) )")
+    @Pointcut(value="execution(* ZTI.project.SecureApplication.controller.AuthenticationController.*(..) )")
     public void myPointcut() {
 
     }

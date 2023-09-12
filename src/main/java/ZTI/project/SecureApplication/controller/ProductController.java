@@ -51,16 +51,22 @@ public class ProductController {
     @PostConstruct
     public void addDefaultProduct()
     {
-        Product product = new Product();
-        product.setProductName("Leg K1234");
-        product.setProductDescription("This is a solid leg");
-        product.setProductPrice(1.23);
-        productService.addNewProduct(product);
+        try {
+            Product product = new Product();
+            product.setProductName("Leg K1234");
+            product.setProductDescription("This is a solid leg");
+            product.setProductPrice(1.23);
+            productService.addNewProduct(product);
 
-        Product product2 = new Product();
-        product2.setProductName("Leg ABC");
-        product2.setProductDescription("It is good option for chairs");
-        product2.setProductPrice(2.47);
-        productService.addNewProduct(product2);
+            Product product2 = new Product();
+            product2.setProductName("Leg ABC");
+            product2.setProductDescription("It is good option for chairs");
+            product2.setProductPrice(2.47);
+            productService.addNewProduct(product2);
+        }
+        catch (Exception e)
+        {
+            System.out.println("There is already a product with such data");
+        }
     }
 }

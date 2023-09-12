@@ -24,30 +24,35 @@ public class AuthorizationController {
     @PostConstruct
     public void addDefaultUsers()
     {
-        User admin = new User();
-        admin.setFirstName("Johny");
-        admin.setLastName("Bravo");
-        admin.setEmail("jbravo@gmail.com");
-        admin.setPassword(passwordEncoder.encode("pass"));
-        admin.setRole(Role.ADMIN);
-        userService.addUser(admin);
+        try {
+            User admin = new User();
+            admin.setFirstName("Johny");
+            admin.setLastName("Bravo");
+            admin.setEmail("jbravo@gmail.com");
+            admin.setPassword(passwordEncoder.encode("pass"));
+            admin.setRole(Role.ADMIN);
+            userService.addUser(admin);
 
-        User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Cena");
-        user.setEmail("jcena@gmail.com");
-        user.setPassword(passwordEncoder.encode(("pass")));
-        user.setRole(Role.USER);
-        userService.addUser(user);
+            User user = new User();
+            user.setFirstName("John");
+            user.setLastName("Cena");
+            user.setEmail("jcena@gmail.com");
+            user.setPassword(passwordEncoder.encode(("pass")));
+            user.setRole(Role.USER);
+            userService.addUser(user);
 
-        User user2 = new User();
-        user2.setFirstName("Ja");
-        user2.setLastName("Uzytkownik");
-        user2.setEmail("ja@gmail.com");
-        user2.setPassword(passwordEncoder.encode(("pass")));
-        user2.setRole(Role.USER);
-        userService.addUser(user2);
-
+            User user2 = new User();
+            user2.setFirstName("Ja");
+            user2.setLastName("Uzytkownik");
+            user2.setEmail("ja@gmail.com");
+            user2.setPassword(passwordEncoder.encode(("pass")));
+            user2.setRole(Role.USER);
+            userService.addUser(user2);
+        }
+        catch (Exception e)
+        {
+            System.out.println("There is already a user with such email");
+        }
     }
 
     @GetMapping("/admin")
