@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+
 @RestController
 @RequestMapping("/api/v1/order")
-@RequiredArgsConstructor
 public class OrderController {
-
     private final OrderService orderService;
+
+    OrderController(final OrderService orderService)
+    {
+        this.orderService = orderService;
+    }
 
     @PostMapping()
     private Order saveOrder(@RequestBody OrderRequest orderRequest)
