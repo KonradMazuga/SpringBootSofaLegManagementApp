@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
+/**
+ * Class for passing Order related data from client to server
+ */
 @Data
 @Builder
 @NoArgsConstructor

@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class for passing Product related data from client to server
+ */
 @Data
 @Builder
 @NoArgsConstructor

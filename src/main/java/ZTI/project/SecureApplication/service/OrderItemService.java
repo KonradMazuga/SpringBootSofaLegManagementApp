@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * OrderItem service that is a business layer for handling order items
+ */
 @Service
 @RequiredArgsConstructor
 public class OrderItemService {
@@ -18,6 +21,11 @@ public class OrderItemService {
     final private OrderRepository orderRepository;
 
 
+    /**
+     * Get orderItems for a specific orderId from DB via repository
+     * @param id orderId
+     * @return list of orderItems for a specific orderId
+     */
     public List<OrderItem> findAllByOrderId(Long id)
     {
         Order order = orderRepository.findById(id).orElseThrow(() -> new ExpressionException(""));

@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class for passing authentication related data from server to client
+ */
 @Data
 @Builder
 @NoArgsConstructor

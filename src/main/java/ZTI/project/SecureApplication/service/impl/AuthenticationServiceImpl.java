@@ -17,6 +17,10 @@ import ZTI.project.SecureApplication.service.JwtService;
 
 import lombok.RequiredArgsConstructor;
 
+
+/**
+ * Authentication service that is responsible for user signup and user singin validation
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -24,6 +28,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    /**
+     * Sign up method that encodes user password and send user data to DB via repository
+     * @param request RequestBody of client call. Type of SignupRequest
+     * @return user token, id and role
+     */
     @Override
     public JwtAuthenticationResponse signup(SignUpRequest request) {
         var user = User.builder().firstName(request.getFirstName()).lastName(request.getLastName())
@@ -34,6 +43,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return JwtAuthenticationResponse.builder().token(jwt).role(Role.USER).userId(user.getId()).build();
     }
 
+    /**
+     * Sign in method that checks if data from request is stored in DB via repository call. If no such user then throw Exception
+     * @param request RequestBody of client call. Type of SigninRequest
+     * @return user token, id and role
+     */
     @Override
     public JwtAuthenticationResponse signin(SigninRequest request) {
         authenticationManager.authenticate(

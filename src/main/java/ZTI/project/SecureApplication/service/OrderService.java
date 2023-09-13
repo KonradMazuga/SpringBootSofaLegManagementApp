@@ -25,6 +25,12 @@ public class OrderService {
     private final UserRepository userRepository;
 
     private final OrderItemRepository orderItemRepository;
+
+    /**
+     * Save order and its orderItems to DB via repository
+     * @param orderRequest OrderRequest with orderId and orderItems. Each orderItem contains a product and product quantity
+     * @return list of orderItems for a specific orderId
+     */
     public Order saveOrder(OrderRequest orderRequest)
     {
         Order order = new Order();
@@ -50,6 +56,10 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+    /**
+     * Read order data such as orderId and orderDate
+     * @return orderId and orderDate
+     */
     public List<OrderResponse> readOrders()
     {
         List<Order> orders =  orderRepository.findAll();
@@ -62,11 +72,21 @@ public class OrderService {
         return orderResponses;
     }
 
+    /**
+     * Get order by orderId from DB via repository
+     * @param id orderId
+     * @return Order object
+     */
     public Optional<Order> getOrderById(Long id)
     {
         return orderRepository.findById(id);
     }
 
+    /**
+     * Get all orders for specific userId from DB via repository
+     * @param id userId
+     * @return list of orders for specific user
+     */
     public List<OrderResponse> getOrdersByUserId(Long id)
     {
         User user = userRepository.findById(id).orElseThrow(() -> new ExpressionException(""));

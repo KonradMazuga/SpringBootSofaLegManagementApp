@@ -11,24 +11,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Rest controller for product requests. Client entry point for product actions
+ */
 @RestController
 @RequestMapping("/api/v1/product")
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
 
+    /**
+     * Get all products from the DB via calling service layer function
+     * @return list of products from the DB
+     */
     @GetMapping("/all")
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
     }
 
-//    @PostMapping("/add")
-//    public ResponseEntity<String> addNewProduct(@RequestBody ProductRequest productRequest)
-//    {
-//        System.out.println("Start adding new product");
-//        productService.addNewProduct(productRequest);
-//        return ResponseEntity.ok("Poduct has been added");
-//    }
+    /**
+     * Add new product to the DB via calling service layer function. Passing product item in RequestBody
+     * @param product RequestBody of Product type to be stored in DB
+     * @return stored product data
+     */
     @PostMapping("/add")
     public Product addNewProduct(@RequestBody Product product)
     {
@@ -38,16 +43,28 @@ public class ProductController {
 //        return ResponseEntity.ok("Poduct has been added");
     }
 
+    /**
+     * Delete product from the DB via calling service layer function. Passing product id in PathVariable
+     * @param id id of product to be deleted from DB
+     */
     @DeleteMapping(value = "/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
    }
 
+    /**
+     * Get product with specific ID from the DB via calling service layer function. Passing product id in PathVariable
+     * @param id id of a product to be retrieved from DB
+     * @return retrieved product data
+     */
     @GetMapping(value = "/{id}")
     public Product getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
+    /**
+     * Create default products and store to the DB via calling service layer function
+     */
     @PostConstruct
     public void addDefaultProduct()
     {

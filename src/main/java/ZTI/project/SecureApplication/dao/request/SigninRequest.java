@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class for handling Sign in.
+ */
 @Data
 @Builder
 @NoArgsConstructor

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Rest controller for authorization feature
+ */
 @RestController
 @RequestMapping("/api/v1/resource")
 @RequiredArgsConstructor
@@ -21,6 +24,9 @@ public class AuthorizationController {
     private final UserServiceImpl userService;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * Addition of default users with roles: USER or ADMIN
+     */
     @PostConstruct
     public void addDefaultUsers()
     {
@@ -55,6 +61,10 @@ public class AuthorizationController {
         }
     }
 
+    /**
+     * Admin data request from a client. Checks if role=ADMIN
+     * @return String to client.
+     */
     @GetMapping("/admin")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> sayHelloAdmin()
@@ -62,9 +72,13 @@ public class AuthorizationController {
         return ResponseEntity.ok("Hi admin");
     }
 
+    /**
+     * User data request from a client. Checks if role=USER
+     * @return String to client.
+     */
     @GetMapping("/user")
     @PreAuthorize("hasAuthority('USER')")
-    public ResponseEntity<String> sayHelloUser1()
+    public ResponseEntity<String> sayHelloUser()
     {
         return ResponseEntity.ok("Hi user");
     }

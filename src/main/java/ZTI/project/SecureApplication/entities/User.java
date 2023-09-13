@@ -3,6 +3,7 @@ package ZTI.project.SecureApplication.entities;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * _user Entity mapping in java code. Implements UserDetails interface for security feature
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,6 +31,7 @@ public class User implements UserDetails {
     private String lastName;
     @Column(unique = true)
     private String email;
+    @JsonIgnore
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -37,7 +42,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        // email in our case
+        // email because it's a primary key
         return email;
     }
 

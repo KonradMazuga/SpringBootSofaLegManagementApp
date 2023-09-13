@@ -6,12 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class for passing OrderItem related data from client to server
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderItemRequest {
-//    private Long productId;
     private Product product;
     private Long quantity;
 }

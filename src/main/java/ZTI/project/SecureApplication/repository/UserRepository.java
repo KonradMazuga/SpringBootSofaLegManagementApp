@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import ZTI.project.SecureApplication.entities.User;
 
+/**
+ * JPARepository for User class.
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     // Since email is unique, we'll find users by email

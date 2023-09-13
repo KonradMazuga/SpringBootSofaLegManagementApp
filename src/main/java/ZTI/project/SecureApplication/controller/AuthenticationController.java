@@ -13,16 +13,30 @@ import ZTI.project.SecureApplication.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Rest controller for authentication feature
+ */
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
+
+    /**
+     * Sign up request from a client.
+     * @param request RequestBody of client call. SignUpRequest type
+     * @return token, userRole and userId
+     */
     @PostMapping("/signup")
     public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody SignUpRequest request) {
         return ResponseEntity.ok(authenticationService.signup(request));
     }
 
+    /**
+     * Sign in request from a client. Contains a RequestBody of SigninRequest type
+     * @param request RequestBody of client call. SignInRequest type
+     * @return token, userRole and userId
+     */
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SigninRequest request) {
         return ResponseEntity.ok(authenticationService.signin(request));
