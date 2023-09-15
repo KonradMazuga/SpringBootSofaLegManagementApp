@@ -37,6 +37,16 @@ public class ProductService {
         productRepository.save(product);
     }
 
+    public Product updateProduct(Product product)
+    {
+        Product existingProduct = productRepository.findById(product.getId()).orElseThrow();
+        existingProduct.setProductName(product.getProductName());
+        existingProduct.setProductDescription(product.getProductDescription());
+        existingProduct.setProductPrice(product.getProductPrice());
+
+        return productRepository.save(existingProduct);
+    }
+
     /**
      * Delete product from DB via repository
      * @param id productId

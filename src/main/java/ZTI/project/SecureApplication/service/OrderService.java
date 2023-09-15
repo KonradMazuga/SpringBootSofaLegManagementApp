@@ -1,10 +1,9 @@
 package ZTI.project.SecureApplication.service;
 
 import ZTI.project.SecureApplication.dao.request.OrderRequest;
-import ZTI.project.SecureApplication.dao.request.OrderResponse;
+import ZTI.project.SecureApplication.dao.response.OrderResponse;
 import ZTI.project.SecureApplication.entities.Order;
 import ZTI.project.SecureApplication.entities.OrderItem;
-import ZTI.project.SecureApplication.entities.Product;
 import ZTI.project.SecureApplication.entities.User;
 import ZTI.project.SecureApplication.repository.OrderItemRepository;
 import ZTI.project.SecureApplication.repository.OrderRepository;

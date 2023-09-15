@@ -1,15 +1,12 @@
 package ZTI.project.SecureApplication.controller;
 
 import ZTI.project.SecureApplication.dao.request.OrderRequest;
-import ZTI.project.SecureApplication.dao.request.OrderResponse;
+import ZTI.project.SecureApplication.dao.response.OrderResponse;
 import ZTI.project.SecureApplication.entities.Order;
 import ZTI.project.SecureApplication.service.OrderService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Rest controller for order requests. Client entry point for order actions

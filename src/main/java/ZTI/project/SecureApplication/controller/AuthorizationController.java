@@ -39,10 +39,18 @@ public class AuthorizationController {
             admin.setRole(Role.ADMIN);
             userService.addUser(admin);
 
+            User admin2 = new User();
+            admin2.setFirstName("Admin");
+            admin2.setLastName("Admin");
+            admin2.setEmail("admin@gmail.com");
+            admin2.setPassword(passwordEncoder.encode("pass"));
+            admin2.setRole(Role.ADMIN);
+            userService.addUser(admin2);
+
             User user = new User();
-            user.setFirstName("John");
-            user.setLastName("Cena");
-            user.setEmail("jcena@gmail.com");
+            user.setFirstName("User");
+            user.setLastName("User");
+            user.setEmail("user@gmail.com");
             user.setPassword(passwordEncoder.encode(("pass")));
             user.setRole(Role.USER);
             userService.addUser(user);
@@ -54,6 +62,14 @@ public class AuthorizationController {
             user2.setPassword(passwordEncoder.encode(("pass")));
             user2.setRole(Role.USER);
             userService.addUser(user2);
+
+            User user3 = new User();
+            user3.setFirstName("John");
+            user3.setLastName("Cena");
+            user3.setEmail("jcena@gmail.com");
+            user3.setPassword(passwordEncoder.encode(("pass")));
+            user3.setRole(Role.USER);
+            userService.addUser(user3);
         }
         catch (Exception e)
         {

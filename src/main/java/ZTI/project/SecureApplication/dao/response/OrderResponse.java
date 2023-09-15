@@ -1,4 +1,4 @@
-package ZTI.project.SecureApplication.dao.request;
+package ZTI.project.SecureApplication.dao.response;
 
 import jakarta.persistence.Temporal;
 import lombok.AllArgsConstructor;

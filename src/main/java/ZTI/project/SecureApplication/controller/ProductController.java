@@ -43,6 +43,13 @@ public class ProductController {
 //        return ResponseEntity.ok("Poduct has been added");
     }
 
+    @PostMapping("/update")
+    public Product updateProduct(@RequestBody Product product)
+    {
+        productService.updateProduct(product);
+        return product;
+    }
+
     /**
      * Delete product from the DB via calling service layer function. Passing product id in PathVariable
      * @param id id of product to be deleted from DB
